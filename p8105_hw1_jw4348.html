@@ -382,6 +382,63 @@ directory.</li>
 <pre class="r"><code>ggsave(&quot;scatterplot.pdf&quot;, hw_plot)</code></pre>
 <pre><code>## Saving 7 x 5 in image</code></pre>
 </div>
+<div id="problem-2" class="section level1">
+<h1>Problem 2</h1>
+<p>This code chunk should create a dataframe comprised of:</p>
+<ul>
+<li>a random sample of size 10 from a standard Normal distribution</li>
+<li>a logical vector indicating whether elements of the sample are
+greater than 0</li>
+<li>a character vector of length 10</li>
+<li>a factor vector of length 10, with 3 different factor “levels”</li>
+</ul>
+<pre class="r"><code>  hw_df = 
+    tibble(
+      num_sample = (rnorm(10)),
+      log_vec = num_sample &gt; 0,
+      char_vec = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;I&quot;, &quot;J&quot;),
+      fac_vec = factor(c(&quot;Agree&quot;, &quot;Disagree&quot;, &quot;Neutral&quot;, &quot;Neutral&quot;,&quot;Agree&quot;, 
+                         &quot;Agree&quot;,&quot;Disagree&quot;, &quot;Neutral&quot;, &quot;Neutral&quot;, &quot;Agree&quot;)),
+    )</code></pre>
+<p>Next I will take the <em>mean</em> of each variable in my dataframe
+<code>hw_df</code>.</p>
+<ul>
+<li><p>The <em>mean</em> of numeric variable in this data frame is
+<strong>-0.0104</strong></p></li>
+<li><p>The <em>mean</em> of logical variables in this data frame is
+<strong>0.4</strong></p></li>
+<li><p>The <em>mean</em> of factor variables in this data frame is
+<strong>NA</strong></p></li>
+<li><p>The <em>mean</em> of character variables in this data frame is
+<strong>NA</strong></p></li>
+<li><p>After taking the mean of each variables, only
+<strong>numeric</strong> and <strong>logical</strong> variable works,
+the <strong>factor</strong> and <strong>character</strong> variables
+don’t work</p></li>
+</ul>
+<p>Finally, I will write a code chunk to convert my other types of
+variables into numerical one.</p>
+<pre class="r"><code>as.numeric(pull(hw_df,log_vec))
+as.numeric(pull(hw_df,char_vec))
+as.numeric(pull(hw_df,fac_vec))</code></pre>
+<ul>
+<li>After I used <code>as.numeric</code> to convert my variables:
+<ul>
+<li>I got warning messages:
+<ul>
+<li><strong>1: In mean.default(pull(hw_df, fac_vec)) : argument is not
+numeric or logical: returning NA</strong></li>
+<li><strong>2: In mean.default(pull(hw_df, char_vec)) :argument is not
+numeric or logical: returning NA</strong></li>
+</ul></li>
+<li>Because we were calculating the mean of the numeric versions of
+factor and character variables, they are not inherently numeric.</li>
+<li>This do explaining why I got mean for numeric and logical variables
+but not for factor and character variables previously. Because numeric
+and logical variables can be treated as numeric.</li>
+</ul></li>
+</ul>
+</div>
 
 
 

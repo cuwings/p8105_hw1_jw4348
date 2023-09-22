@@ -32,3 +32,51 @@ hw_plot
 ```{r}
 ggsave("scatterplot.pdf", hw_plot)
 ```
+
+# Problem 2
+
+This code chunk should create a dataframe comprised of: 
+
+* a random sample of size 10 from a standard Normal distribution
+* a logical vector indicating whether elements of the sample are greater than 0
+* a character vector of length 10
+* a factor vector of length 10, with 3 different factor “levels”
+  
+```{r, hw_df}
+  hw_df = 
+    tibble(
+      num_sample = (rnorm(10)),
+      log_vec = num_sample > 0,
+      char_vec = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
+      fac_vec = factor(c("Agree", "Disagree", "Neutral", "Neutral","Agree", 
+                         "Agree","Disagree", "Neutral", "Neutral", "Agree")),
+    )
+```
+
+Next I will take the _mean_ of each variable in my dataframe `hw_df`.
+
+* The _mean_ of  numeric variable in this data frame is **`r round(mean(pull(hw_df, num_sample)), digit = 4)`**
+
+* The _mean_ of  logical variables in this data frame is **`r round(mean(pull(hw_df, log_vec)), digit = 4)`**
+
+* The _mean_ of  factor variables in this data frame is **`r round(mean(pull(hw_df, fac_vec)), digit = 4)`**
+
+* The _mean_ of  character variables in this data frame is **`r round(mean(pull(hw_df, char_vec)), digit = 4)`**
+
+* After taking the mean of each variables, only **numeric** and **logical** variable works, the **factor** and **character** variables don't work
+
+Finally, I will write a code chunk to convert my other types of variables into numerical one.
+
+```{r, eval=FALSE}
+as.numeric(pull(hw_df,log_vec))
+as.numeric(pull(hw_df,char_vec))
+as.numeric(pull(hw_df,fac_vec))
+```
+
+* After I used `as.numeric` to convert my variables: 
+  * I got warning messages: 
+    * **1: In mean.default(pull(hw_df, fac_vec)) : argument is not numeric or logical: returning NA**
+    * **2: In mean.default(pull(hw_df, char_vec)) :argument is not numeric or logical: returning NA**
+    
+  * Because we were calculating the mean of the numeric versions of factor and character variables, they are not inherently numeric.
+  * This do explaining why I got mean for numeric and logical variables but not for factor and character variables previously. Because numeric and logical variables can be treated as numeric. 
