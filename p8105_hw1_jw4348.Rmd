@@ -27,7 +27,12 @@ hw_plot = ggplot(early_january_weather, aes(x = time_hour, y = temp, color = hum
 hw_plot
 ```
 
-* Next is the code chunk to export the scatterplot to my project directory.
+* Here is the description of the pattern the scatterplot:
+  * From early January to mid-January, the overall trend of temperatures is getting     higher. 
+  * However, there is still a large temperature difference between morning and    evening every day, with the temperature at noon generally being the peak of the     day. 
+  * The days with the highest humidity are from January 10th to 14th.
+  
+Next is the code chunk to export the scatterplot to my project directory.
 
 ```{r}
 ggsave("scatterplot.pdf", hw_plot)
