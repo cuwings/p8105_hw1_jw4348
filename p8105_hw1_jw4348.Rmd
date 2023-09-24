@@ -28,8 +28,8 @@ hw_plot
 ```
 
 * Here is the description of the pattern the scatterplot:
-  * From early January to mid-January, the overall trend of temperatures is getting     higher. 
-  * However, there is still a large temperature difference between morning and    evening every day, with the temperature at noon generally being the peak of the     day. 
+  * From early January to mid-January, the overall trend of temperatures is getting higher. 
+  * However, there is still a large temperature difference between morning and evening every day, with the temperature at noon generally being the peak of the day. 
   * The days with the highest humidity are from January 10th to 14th.
   
 Next is the code chunk to export the scatterplot to my project directory.
@@ -68,7 +68,7 @@ Next I will take the _mean_ of each variable in my dataframe `hw_df`.
 
 * The _mean_ of  character variables in this data frame is **`r round(mean(pull(hw_df, char_vec)), digit = 4)`**
 
-* After taking the mean of each variables, only **numeric** and **logical** variable works, the **factor** and **character** variables don't work
+* After taking the mean of each variables, only **numeric** and **logical** variables work, the **factor** and **character** variables don't work
 
 Finally, I will write a code chunk to convert my other types of variables into numerical one.
 
